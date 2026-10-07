@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Family</title>
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#080b12;
+    color:white;
+    overflow-x:hidden;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+nav{
+    position:fixed;
+    top:20px;
+    left:50%;
+    transform:translateX(-50%);
+
+    width:90%;
+    max-width:1100px;
+
+    padding:14px 22px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    background:rgba(15,18,27,.75);
+    border:1px solid rgba(255,255,255,.1);
+
+    backdrop-filter:blur(20px);
+
+    border-radius:18px;
+
+    z-index:999;
+}
+
+.logo{
+    font-size:19px;
+    font-weight:bold;
+}
+
+.logo span{
+    color:#ffb84d;
+}
+
+nav a{
+    color:#aaa;
+    text-decoration:none;
+    margin-left:20px;
+    font-size:13px;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:white;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    position:relative;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(8,11,18,.35),
+            #080b12
+        ),
+        url("keluarga.jpg");
+
+    background-size:cover;
+    background-position:center;
+
+    text-align:center;
+}
+
+.hero::after{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            transparent 10%,
+            rgba(8,11,18,.7) 85%
+        );
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+
+    max-width:850px;
+
+    animation:heroIn 1.2s ease;
+}
+
+.small-title{
+    color:#ffb84d;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    font-size:12px;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:clamp(48px,8vw,90px);
+    line-height:.95;
+    letter-spacing:-4px;
+    margin-bottom:25px;
+}
+
+.hero h1 span{
+    color:#ffb84d;
+}
+
+.hero p{
+    max-width:600px;
+    margin:auto;
+
+    color:#c4c8d0;
+
+    font-size:16px;
+    line-height:1.8;
+}
+
+.hero-button{
+    display:inline-block;
+
+    margin-top:35px;
+
+    padding:14px 28px;
+
+    border-radius:50px;
+
+    background:#ffb84d;
+    color:#111;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    transition:.3s;
+}
+
+.hero-button:hover{
+    transform:translateY(-5px);
+    box-shadow:0 12px 35px rgba(255,184,77,.25);
+}
+
+
+/* =========================
+   GENERAL SECTION
+========================= */
+
+section{
+    padding:110px 7%;
+}
+
+.section-head{
+    max-width:700px;
+    margin-bottom:55px;
+}
+
+.section-number{
+    color:#ffb84d;
+    font-size:12px;
+    letter-spacing:3px;
+    margin-bottom:12px;
+}
+
+.section-head h2{
+    font-size:45px;
+    letter-spacing:-2px;
+}
+
+.section-head p{
+    color:#858b97;
+    margin-top:15px;
+    line-height:1.7;
+}
+
+
+/* =========================
+   FAMILY
+========================= */
+
+.family{
+    display:grid;
+
+    grid-template-columns:
+        repeat(5,1fr);
+
+    gap:14px;
+
+    max-width:1200px;
+    margin:auto;
+}
+
+.person{
+    height:430px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:20px;
+
+    background:#11151e;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    transition:.5s;
+}
+
+.person:hover{
+    transform:translateY(-10px);
+    border-color:rgba(255,184,77,.5);
+}
+
+.person img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.6s;
+}
+
+.person:hover img{
+    transform:scale(1.08);
+}
+
+.person::after{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            transparent 35%,
+            rgba(0,0,0,.9)
+        );
+}
+
+.person-info{
+    position:absolute;
+
+    bottom:25px;
+    left:20px;
+    right:20px;
+
+    z-index:2;
+}
+
+.person-info small{
+    color:#ffb84d;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:2px;
+}
+
+.person-info h3{
+    font-size:22px;
+    margin-top:6px;
+}
+
+
+/* =========================
+   STORY
+========================= */
+
+.story{
+    background:#0d111a;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:70px;
+
+    align-items:center;
+}
+
+.story-image{
+    height:550px;
+
+    border-radius:25px;
+
+    overflow:hidden;
+}
+
+.story-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.story-text h2{
+    font-size:48px;
+    letter-spacing:-2px;
+    margin-bottom:25px;
+}
+
+.story-text p{
+    color:#9299a6;
+
+    line-height:2;
+
+    margin-bottom:20px;
+}
+
+.highlight{
+    color:#ffb84d;
+}
+
+
+/* =========================
+   MEMORY
+========================= */
+
+.memories{
+    background:#080b12;
+}
+
+.memory-grid{
+    columns:3 250px;
+    column-gap:15px;
+}
+
+.memory{
+    width:100%;
+
+    margin-bottom:15px;
+
+    border-radius:16px;
+
+    overflow:hidden;
+
+    break-inside:avoid;
+
+    position:relative;
+}
+
+.memory img{
+    width:100%;
+    display:block;
+
+    transition:.5s;
+}
+
+.memory:hover img{
+    transform:scale(1.04);
+}
+
+
+/* =========================
+   QUOTE
+========================= */
+
+.quote{
+    min-height:500px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    background:
+        linear-gradient(
+            rgba(8,11,18,.75),
+            rgba(8,11,18,.9)
+        ),
+        url("foto6.jpg");
+
+    background-size:cover;
+    background-position:center;
+}
+
+.quote-box{
+    max-width:800px;
+}
+
+.quote-mark{
+    color:#ffb84d;
+    font-size:70px;
+}
+
+.quote h2{
+    font-size:clamp(30px,5vw,55px);
+    line-height:1.25;
+}
+
+.quote p{
+    margin-top:25px;
+    color:#999;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    padding:50px 20px;
+
+    text-align:center;
+
+    background:#05070b;
+
+    border-top:1px solid rgba(255,255,255,.06);
+}
+
+footer h3{
+    margin-bottom:10px;
+}
+
+footer p{
+    color:#666;
+    font-size:13px;
+}
+
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes heroIn{
+
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media(max-width:900px){
+
+    .family{
+        grid-template-columns:
+            repeat(3,1fr);
+    }
+
+    .story{
+        grid-template-columns:1fr;
+    }
+
+    .story-image{
+        height:400px;
+    }
+
+}
+
+
+/* =========================
+   HP
+========================= */
+
+@media(max-width:600px){
+
+    nav{
+        width:94%;
+    }
+
+    nav a{
+        margin-left:8px;
+        font-size:10px;
+    }
+
+    .logo{
+        font-size:15px;
+    }
+
+    section{
+        padding:80px 5%;
+    }
+
+    .hero h1{
+        font-size:52px;
+    }
+
+    .family{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .person{
+        height:330px;
+    }
+
+    .story-text h2{
+        font-size:38px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+
+    <div class="logo">
+        Our <span>Family</span>
+    </div>
+
+    <div>
+        <a href="#home">Home</a>
+        <a href="#family">Family</a>
+        <a href="#story">Story</a>
+        <a href="#memory">Memory</a>
+    </div>
+
+</nav>
+
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="small-title">
+            Welcome to our family
+        </div>
+
+        <h1>
+            Together<br>
+            <span>Always.</span>
+        </h1>
+
+        <p>
+            Sebuah tempat kecil untuk menyimpan
+            orang-orang yang paling berarti,
+            cerita yang pernah dilewati,
+            dan kenangan yang tidak ingin dilupakan.
+        </p>
+
+        <a href="#family" class="hero-button">
+            Meet The Family
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= FAMILY ================= -->
+
+<section id="family">
+
+    <div class="section-head">
+
+        <div class="section-number">
+            01 — FAMILY
+        </div>
+
+        <h2>
+            The people<br>
+            behind the story.
+        </h2>
+
+        <p>
+            Lima orang dengan karakter yang berbeda,
+            tetapi tetap menjadi satu keluarga.
+        </p>
+
+    </div>
+
+
+    <div class="family">
+
+
+        <!-- AYAH -->
+
+        <div class="person">
+
+            <img src="ayah1.jpg">
+
+            <div class="person-info">
+
+                <small>Father</small>
+
+                <h3>Arzam</h3>
+
+            </div>
+
+        </div>
+
+
+        <!-- IBU -->
+
+        <div class="person">
+
+            <img src="ibu1.jpg">
+
+            <div class="person-info">
+
+                <small>Mother</small>
+
+                <h3>Laili</h3>
+
+            </div>
+
+        </div>
+
+
+        <!-- FAHRIAL -->
+
+        <div class="person">
+
+            <img src="fahrial.jpg">
+
+            <div class="person-info">
+
+                <small>First Son</small>
+
+                <h3>Fahrial</h3>
+
+            </div>
+
+        </div>
+
+
+        <!-- ADIK 1 -->
+
+        <div class="person">
+
+            <img src="Zalfa.jpg">
+
+            <div class="person-info">
+
+                <small>Second Child</small>
+
+                <h3>Zalfa</h3>
+
+            </div>
+
+        </div>
+
+
+        <!-- ADIK 2 -->
+
+        <div class="person">
+
+            <img src="Fayd.jpg">
+
+            <div class="person-info">
+
+                <small>Youngest</small>
+
+                <h3>Fayd</h3>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= STORY ================= -->
+
+<section class="story" id="story">
+
+    <div class="story-image">
+
+        <img src="keluarga_2.jpg">
+
+    </div>
+
+
+    <div class="story-text">
+
+        <div class="section-number">
+            02 — OUR STORY
+        </div>
+
+        <h2>
+            More than<br>
+            just a house.
+        </h2>
+
+        <p>
+            Rumah bukan hanya tempat untuk tinggal.
+            Di sanalah kita tumbuh, tertawa,
+            belajar, bertengkar, dan saling memaafkan.
+        </p>
+
+        <p>
+            Setiap orang punya cerita masing-masing,
+            tetapi cerita kami selalu memiliki satu
+            kesamaan: <span class="highlight">keluarga.</span>
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= MEMORY ================= -->
+
+<section class="memories" id="memory">
+
+    <div class="section-head">
+
+        <div class="section-number">
+            03 — MEMORIES
+        </div>
+
+        <h2>
+            Little moments,<br>
+            big memories.
+        </h2>
+
+        <p>
+            Beberapa momen sederhana yang
+            menjadi bagian dari perjalanan keluarga.
+        </p>
+
+    </div>
+
+
+    <div class="memory-grid">
+
+        <div class="memory">
+            <img src="keluarga_3.jpg">
+        </div>
+
+        <div class="memory">
+            <img src="keluarga_4.jpg">
+        </div>
+              <div class="memory">
+            <img src="Foto9.jpg">
+              </div>
+      <div class="memory">
+            <img src="Foto12345678.jpg">
+      </div>
+      <div class="memory">
+            <img src="Foto123.jpg">
+              </div>
+      <div class="memory">
+            <img src="Foto1234.jpg">
+              </div>
+      <div class="memory">
+            <img src="Foto12345.jpg">
+              </div>
+      <div class="memory">
+            <img src="Foto123456.jpg">
+              </div>
+      <div class="memory">
+            <img src="Foto1234567.jpg">
+      </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= QUOTE ================= -->
+
+<section class="quote">
+
+    <div class="quote-box">
+
+        <div class="quote-mark">
+            “
+        </div>
+
+        <h2>
+            Wherever we go,
+            we always have a place
+            to come home to.
+        </h2>
+
+        <p>
+            — Our Family
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <h3>
+        Our Family ❤️
+    </h3>
+
+    <p>
+        Dibuat dengan HTML & CSS
+    </p>
+
+    <p>
+        © 2026
+    </p>
+
+</footer>
+
+
+</body>
+</html>
